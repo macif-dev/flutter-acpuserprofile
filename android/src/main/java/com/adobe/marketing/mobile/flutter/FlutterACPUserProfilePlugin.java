@@ -15,6 +15,7 @@ package com.adobe.marketing.mobile.flutter;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import androidx.annotation.NonNull;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,6 +29,7 @@ import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -35,13 +37,26 @@ import java.util.List;
 import java.util.Map;
 
 /** FlutterACPUserProfilePlugin */
-public class FlutterACPUserProfilePlugin implements MethodCallHandler {
+public class FlutterACPUserProfilePlugin implements MethodCallHandler, FlutterPlugin {
 
   private String TAG = "FlutterACPUserProfilePlugin";
+  private static final String CHANNEL_NAME = "flutter_acpuserprofile";
+  private MethodChannel channel;
 
   public static void registerWith(Registrar registrar) {
-    final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutter_acpuserprofile");
-    channel.setMethodCallHandler(new FlutterACPUserProfilePlugin());
+    final MethodChannel channelV1 = new MethodChannel(registrar.messenger(), CHANNEL_NAME);
+    channelV1.setMethodCallHandler(new FlutterACPUserProfilePlugin());
+  }
+
+  @Override
+  public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
+    channel = new MethodChannel(binding.getBinaryMessenger(), CHANNEL_NAME);
+    channel.setMethodCallHandler(this);
+  }
+
+  @Override
+  public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
+    channel.setMethodCallHandler(null);
   }
 
   @Override

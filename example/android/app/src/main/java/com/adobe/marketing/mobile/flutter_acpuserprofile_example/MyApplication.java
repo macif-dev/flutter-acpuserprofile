@@ -14,10 +14,8 @@ import com.adobe.marketing.mobile.MobileCore;
 import com.adobe.marketing.mobile.Signal;
 
 import io.flutter.app.FlutterApplication;
-import io.flutter.plugin.common.PluginRegistry;
-import io.flutter.plugins.GeneratedPluginRegistrant;
 
-public class MyApplication extends FlutterApplication implements PluginRegistry.PluginRegistrantCallback {
+public class MyApplication extends FlutterApplication {
 
     @Override
     public void onCreate() {
@@ -69,11 +67,6 @@ public class MyApplication extends FlutterApplication implements PluginRegistry.
             public void onActivityDestroyed(Activity activity) { /*no-op*/ }
         });
 
-    }
-
-    @Override
-    public void registerWith(PluginRegistry pluginRegistry) {
-        GeneratedPluginRegistrant.registerWith(pluginRegistry);
     }
 }
 
