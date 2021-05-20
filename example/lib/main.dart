@@ -89,26 +89,26 @@ class _MyAppState extends State<MyApp> {
             getRichText('ACPUserProfile extension version: ',
                 '$_extensionVersion\n'),
             getRichText('User attributes = ', '$_userAttr\n'),
-            RaisedButton(
+            TextButton(
               child: Text("FlutterACPUserrofile.getUserAttributes"),
               onPressed: () => getUserAttrs()
             ),
-            RaisedButton(
+            TextButton(
               child: Text("FlutterACPUserrofile.removeUserAttribute"),
               onPressed: () =>
                   FlutterACPUserProfile.removeUserAttribute("attrNameTest"),
             ),
-            RaisedButton(
+            TextButton(
               child: Text("FlutterACPUserrofile.removeUserAttributes"),
               onPressed: () =>
                   FlutterACPUserProfile.removeUserAttributes(["attrNameTest", "mapKey"]),
             ),
-            RaisedButton(
+            TextButton(
               child: Text("FlutterACPUserrofile.updateUserAttribute"),
               onPressed: () =>
                   FlutterACPUserProfile.updateUserAttribute("attrNameTest", "attrValueTest"),
             ),
-            RaisedButton(
+            TextButton(
               child: Text("FlutterACPUserrofile.updateUserAttributes"),
               onPressed: () =>
                   FlutterACPUserProfile.updateUserAttributes({"mapKey": "mapValue", "mapKey1": "mapValue1"}),

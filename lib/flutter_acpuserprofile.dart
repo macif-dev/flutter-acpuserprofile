@@ -26,27 +26,27 @@ class FlutterACPUserProfile {
 
   /// Gets the current User Profile extension version.
   static Future<String> getUserAttributes(List<String> attributeKeys) async {
-    final String userAttributes = await _channel.invokeMethod('getUserAttributes', attributeKeys ?? "");
+    final String userAttributes = await _channel.invokeMethod('getUserAttributes', attributeKeys);
     return userAttributes;
   }
 
   /// UserProfile API to remove the given attribute name
   static Future<void> removeUserAttribute(String attributeName) async {
-    await _channel.invokeMethod<void>('removeUserAttribute', attributeName ?? "");
+    await _channel.invokeMethod<void>('removeUserAttribute', attributeName);
   }
 
   /// UserProfile API to remove the given attribute name
   static Future<void> removeUserAttributes(List<String> attributeName) async {
-    await _channel.invokeMethod<void>('removeUserAttributes', attributeName ?? "");
+    await _channel.invokeMethod<void>('removeUserAttributes', attributeName);
   }
 
   /// UserProfile API to set user profile attributes keys and values.
   static Future<void> updateUserAttribute(String attributeName, String attributeValue) async {
-    await _channel.invokeMethod<void>('updateUserAttribute', {"attributeName" : attributeName ?? "", "attributeValue" : attributeValue ?? ""});
+    await _channel.invokeMethod<void>('updateUserAttribute', {"attributeName" : attributeName, "attributeValue" : attributeValue});
   }
 
   /// UserProfile API to set user profile attributes keys and values.
   static Future<void> updateUserAttributes(Map<String, Object> attributeMap) async {
-    await _channel.invokeMethod<void>('updateUserAttributes', attributeMap ?? {});
+    await _channel.invokeMethod<void>('updateUserAttributes', attributeMap);
   }
 }
